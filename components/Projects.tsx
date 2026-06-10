@@ -1,4 +1,11 @@
+"use client";
+
+import { useTheme } from "./ThemeProvider";
+
 export default function Projects() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   const projectsList = [
     {
       title: "Yegna Home",
@@ -38,9 +45,25 @@ export default function Projects() {
     },
   ];
 
+  const sectionBg = isDark
+    ? "bg-black/40 border-t border-neutral-900"
+    : "bg-gray-100/60 border-t border-gray-200";
+
+  const cardBase = isDark
+    ? "border-neutral-850 bg-neutral-950/40 hover:bg-neutral-900/40"
+    : "border-gray-200 bg-white/80 hover:bg-white shadow-sm hover:shadow-md";
+
+  const tagClass = isDark
+    ? "bg-neutral-900 text-gray-400 border-neutral-800"
+    : "bg-gray-100 text-gray-500 border-gray-200";
+
+  const dividerClass = isDark ? "border-neutral-900" : "border-gray-200";
+
+  const iconBg = isDark ? "bg-neutral-900" : "bg-gray-100";
+
   return (
-    <section id="projects" className="py-24 relative overflow-hidden bg-black/40 border-t border-neutral-900">
-      {/* Background glow effects */}
+    <section id="projects" className={`py-24 relative overflow-hidden ${sectionBg}`}>
+      {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-violet-600/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -49,7 +72,7 @@ export default function Projects() {
           <span className="text-sm font-semibold tracking-wider text-violet-400 uppercase">
             My Portfolio
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-2 tracking-tight">
+          <h2 className={`text-4xl md:text-5xl font-bold mt-2 tracking-tight ${isDark ? "text-white" : "text-gray-900"}`}>
             Featured Projects
           </h2>
         </div>
@@ -59,7 +82,7 @@ export default function Projects() {
           {projectsList.map((project, idx) => (
             <div
               key={idx}
-              className={`group relative rounded-3xl border border-neutral-850 bg-neutral-950/40 p-8 backdrop-blur-md transition-all duration-350 hover:-translate-y-2 hover:bg-neutral-900/40 hover:shadow-3xl hover:shadow-violet-600/5 flex flex-col justify-between ${project.accentBorder}`}
+              className={`group relative rounded-3xl border p-8 backdrop-blur-md transition-all duration-350 hover:-translate-y-2 hover:shadow-3xl hover:shadow-violet-600/5 flex flex-col justify-between ${cardBase} ${project.accentBorder}`}
             >
               {/* Card top gradient glow on hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${project.glowClass} to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-350`} />
@@ -70,18 +93,18 @@ export default function Projects() {
                   <span className={`text-xs font-semibold px-3 py-1 rounded-full ${project.accentBg} ${project.accentText}`}>
                     {project.category}
                   </span>
-                  <div className={`w-10 h-10 rounded-xl bg-neutral-900 flex items-center justify-center ${project.accentText}`}>
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${iconBg} ${project.accentText}`}>
                     {project.icon}
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-white transition-colors">
+                <h3 className={`text-2xl font-bold mb-4 transition-colors ${isDark ? "text-white" : "text-gray-900"}`}>
                   {project.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-6">
+                <p className={`text-sm md:text-base leading-relaxed mb-6 ${isDark ? "text-gray-400" : "text-gray-500"}`}>
                   {project.description}
                 </p>
 
@@ -90,7 +113,7 @@ export default function Projects() {
                   {project.tags.map((tag, tIdx) => (
                     <span
                       key={tIdx}
-                      className="text-xs bg-neutral-900 text-gray-400 px-3 py-1 rounded-md border border-neutral-800"
+                      className={`text-xs px-3 py-1 rounded-md border ${tagClass}`}
                     >
                       {tag}
                     </span>
@@ -99,16 +122,16 @@ export default function Projects() {
               </div>
 
               {/* Action Link */}
-              <div className="relative z-10 pt-4 border-t border-neutral-900">
+              <div className={`relative z-10 pt-4 border-t ${dividerClass}`}>
                 <a
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-white group/btn hover:opacity-90 transition-opacity"
+                  className={`inline-flex items-center gap-2 text-sm font-semibold group/btn hover:opacity-90 transition-opacity ${isDark ? "text-white" : "text-gray-900"}`}
                 >
                   Visit Website
                   <svg
-                    className="w-4 h-4 text-gray-400 group-hover/btn:text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
+                    className={`w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform ${isDark ? "text-gray-400 group-hover/btn:text-white" : "text-gray-400 group-hover/btn:text-gray-900"}`}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
