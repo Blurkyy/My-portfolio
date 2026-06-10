@@ -43,6 +43,60 @@ export default function Projects() {
         </svg>
       ),
     },
+    {
+      title: "Tsedey Modern Web",
+      category: "Modern Web Experience",
+      description:
+        "A sleek, modern web application showcasing contemporary design principles and responsive layouts. Built with a focus on user experience, performance, and visual aesthetics that push the boundaries of modern front-end development.",
+      url: "https://tsedey-built-modern-web.vercel.app/",
+      color: "sky",
+      tags: ["React", "Modern UI", "Responsive Design", "Performance", "Vercel"],
+      glowClass: "from-sky-600/10",
+      accentText: "text-sky-400",
+      accentBg: "bg-sky-400/10",
+      accentBorder: "group-hover:border-sky-500/40",
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      ),
+    },
+    {
+      title: "PropFind",
+      category: "Real Estate Platform",
+      description:
+        "A modern real estate discovery platform that streamlines property search and browsing. Features intuitive filtering, property listings, and a clean interface designed to help users find their perfect home or investment property with ease.",
+      url: "https://propfind-nine.vercel.app",
+      color: "rose",
+      tags: ["Next.js", "Real Estate", "Property Search", "Tailwind CSS", "Vercel"],
+      glowClass: "from-rose-600/10",
+      accentText: "text-rose-400",
+      accentBg: "bg-rose-400/10",
+      accentBorder: "group-hover:border-rose-500/40",
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+      ),
+    },
+    {
+      title: "Guad",
+      category: "Digital Product",
+      description:
+        "A thoughtfully crafted digital product delivering a seamless and engaging user experience. Built with attention to detail, smooth interactions, and a refined interface that reflects a commitment to quality and modern web standards.",
+      url: "https://guad-five.vercel.app",
+      color: "violet",
+      tags: ["React", "TypeScript", "Modern Design", "Animations", "Vercel"],
+      glowClass: "from-violet-600/10",
+      accentText: "text-violet-400",
+      accentBg: "bg-violet-400/10",
+      accentBorder: "group-hover:border-violet-500/40",
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
+    },
   ];
 
   const sectionBg = isDark
