@@ -1,29 +1,74 @@
 @import "tailwindcss";
 
+/* ── Theme tokens ── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light mode defaults */
+  --bg-base:        #f4f4f6;
+  --bg-surface:     #ffffff;
+  --bg-surface-alt: rgba(255,255,255,0.6);
+  --bg-card:        rgba(255,255,255,0.7);
+  --bg-overlay:     rgba(248,248,252,0.4);
+
+  --border-default: rgba(0,0,0,0.08);
+  --border-subtle:  rgba(0,0,0,0.06);
+
+  --text-primary:   #0f0f12;
+  --text-secondary: #4b5563;
+  --text-muted:     #6b7280;
+
+  --glow-violet:    rgba(139,92,246,0.08);
+  --glow-cyan:      rgba(6,182,212,0.08);
+
+  --background: #f4f4f6;
+  --foreground: #0f0f12;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Dark mode — activated by .dark on <html> */
+html.dark {
+  --bg-base:        #000000;
+  --bg-surface:     #0a0a0a;
+  --bg-surface-alt: rgba(10,10,10,0.6);
+  --bg-card:        rgba(10,10,10,0.4);
+  --bg-overlay:     rgba(23,23,26,0.4);
+
+  --border-default: rgba(255,255,255,0.07);
+  --border-subtle:  rgba(255,255,255,0.04);
+
+  --text-primary:   #ededed;
+  --text-secondary: #9ca3af;
+  --text-muted:     #6b7280;
+
+  --glow-violet:    rgba(124,58,237,0.10);
+  --glow-cyan:      rgba(6,182,212,0.08);
+
+  --background: #000000;
+  --foreground: #ededed;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ── Base ── */
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg-base);
+  color: var(--text-primary);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
+/* ── Semantic utility classes used across components ── */
+
+/* Backgrounds */
+.bg-theme-base     { background: var(--bg-base); }
+.bg-theme-surface  { background: var(--bg-surface); }
+.bg-theme-card     { background: var(--bg-card); }
+.bg-theme-overlay  { background: var(--bg-overlay); }
+
+/* Text */
+.text-theme-primary   { color: var(--text-primary); }
+.text-theme-secondary { color: var(--text-secondary); }
+.text-theme-muted     { color: var(--text-muted); }
+
+/* Borders */
+.border-theme         { border-color: var(--border-default); }
+.border-theme-subtle  { border-color: var(--border-subtle); }
 
 /* ── Hero Avatar ── */
 .hero-avatar-ring {
@@ -36,9 +81,10 @@ body {
 
 .hero-avatar-inner {
   border-radius: 9999px;
-  background: var(--background);
+  background: var(--bg-base);
   padding: 3px;
   display: flex;
+  transition: background 0.3s ease;
 }
 
 .hero-avatar-img {
@@ -53,4 +99,12 @@ body {
 @keyframes spin-ring {
   from { filter: hue-rotate(0deg); }
   to   { filter: hue-rotate(360deg); }
+}
+
+/* ── Smooth theme transitions on key elements ── */
+section,
+nav,
+main,
+div {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
